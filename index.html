@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8fa">
+  <meta name="description" content="Portfolio de Valentín del Toro Izquierdo, estudiante de informática con formación en hardware, Python, Arduino y desarrollo web.">
+  <title>Valentín del Toro Izquierdo | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #142d3c;
+      --muted: #647783;
+      --blue: #176487;
+      --blue-dark: #10445e;
+      --mint: #dff3ed;
+      --line: #e6edf0;
+      --paper: #ffffff;
+      --bg: #f5f8fa;
+      --shadow: 0 18px 55px rgba(24, 56, 73, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .browser-bar {
+      height: 30px; background: #111; color: #e8eef1;
+      display: flex; align-items: center; padding: 0 max(18px, calc((100% - 1120px)/2));
+      font-size: 10px; letter-spacing: .02em;
+    }
+    .browser-dot { width: 7px; height: 7px; border-radius: 50%; background: #60c9a8; margin-right: 9px; }
+    header {
+      height: 76px; background: rgba(255,255,255,.94);
+      border-bottom: 1px solid var(--line); display: flex; align-items: center;
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px);
+    }
+    .nav {
+      width: min(1120px, calc(100% - 40px)); margin: auto;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 190px; }
+    .brand-mark {
+      width: 35px; height: 35px; border-radius: 11px; background: var(--blue-dark);
+      color: white; display: grid; place-items: center; font-weight: 800; font-size: 12px;
+      box-shadow: 0 5px 14px rgba(16,68,94,.2);
+    }
+    .brand-name { font-weight: 800; font-size: 12px; line-height: 1.25; }
+    .brand-name span { display: block; color: var(--muted); font-weight: 500; font-size: 10px; }
+    .nav-links { display: flex; align-items: center; gap: 27px; font-size: 11px; font-weight: 600; color: #536875; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-side { display: flex; gap: 9px; align-items: center; font-size: 11px; font-weight: 700; }
+    .lang { padding: 7px 10px; border: 1px solid var(--line); border-radius: 9px; background: white; }
+    main { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    .hero {
+      min-height: 510px; display: grid; grid-template-columns: 1.08fr .92fr;
+      align-items: center; gap: 36px; padding: 58px 0 48px;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #659b8b; font-size: 11px; font-weight: 700; margin-bottom: 26px; }
+    .eyebrow:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #69c6a8; box-shadow: 0 0 0 4px #e4f5ef; }
+    .hello { color: var(--blue); font-weight: 700; font-size: 13px; margin: 0 0 3px; }
+    h1 { font-family: Manrope, sans-serif; font-size: clamp(42px, 5.5vw, 68px); line-height: 1.04; letter-spacing: -.065em; margin: 0 0 17px; font-weight: 800; }
+    h1 span { color: var(--blue); display: block; }
+    .intro { font-size: 15px; line-height: 1.75; color: #405866; max-width: 520px; margin: 0 0 10px; font-weight: 500; }
+    .subintro { font-size: 12px; color: var(--muted); max-width: 490px; margin: 0 0 25px; line-height: 1.8; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; border-radius: 10px; padding: 11px 17px; font-size: 11px; font-weight: 700; transition: .2s; }
+    .btn-primary { color: white; background: var(--blue-dark); box-shadow: 0 7px 17px rgba(16,68,94,.17); }
+    .btn-primary:hover { transform: translateY(-2px); background: var(--blue); }
+    .btn-light { background: white; border: 1px solid var(--line); }
+    .btn-light:hover { border-color: #a9c4d0; }
+    .meta { display: flex; gap: 22px; flex-wrap: wrap; color: #71828c; font-size: 10px; margin-top: 26px; }
+    .meta span:before { content: "✳"; color: #6db99f; margin-right: 7px; }
+    .visual { position: relative; min-height: 370px; display: grid; place-items: center; }
+    .orbit { width: 330px; height: 330px; border: 1px solid #e2ebef; border-radius: 50%; position: absolute; }
+    .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid #e8eff2; border-radius: 50%; inset: 18px; }
+    .orbit:after { inset: 38px; }
+    .profile-card {
+      position: relative; z-index: 1; width: 235px; height: 270px; border-radius: 30px;
+      background: linear-gradient(145deg, #fff, #e8f1f4); border: 7px solid white;
+      box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .profile-card:before {
+      content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #d8f2e9, #a9d2d7 58%, #7eaebf);
+      opacity: .9; top: 38px;
+    }
+    .monogram {
+      position: relative; z-index: 1; font-family: Manrope, sans-serif; font-size: 66px;
+      letter-spacing: -.09em; font-weight: 800; color: #fff; text-shadow: 0 5px 20px rgba(16,68,94,.2);
+    }
+    .float-card {
+      position: absolute; z-index: 2; background: white; border: 1px solid #edf1f3;
+      border-radius: 12px; box-shadow: 0 12px 28px rgba(26,58,73,.08);
+      padding: 10px 13px; display: flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 800;
+    }
+    .float-card small { display: block; color: var(--muted); font-size: 9px; font-weight: 500; }
+    .float-icon { width: 25px; height: 25px; border-radius: 8px; display: grid; place-items: center; background: var(--mint); color: #338c78; }
+    .float-one { top: 76px; right: -2px; }
+    .float-two { bottom: 73px; left: -2px; }
+    .quick-links {
+      background: white; border: 1px solid var(--line); box-shadow: var(--shadow);
+      border-radius: 17px; display: grid; grid-template-columns: repeat(3, 1fr); overflow: hidden;
+      margin: 0 0 76px;
+    }
+    .quick-item { padding: 19px 22px; display: flex; gap: 12px; align-items: flex-start; border-right: 1px solid var(--line); }
+    .quick-item:last-child { border: 0; }
+    .num { color: #70b99e; font-size: 10px; font-weight: 800; padding-top: 2px; }
+    .quick-item strong { display: block; font-size: 12px; }
+    .quick-item small { color: var(--muted); font-size: 10px; }
+    section { scroll-margin-top: 100px; margin: 0 0 76px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 22px; }
+    .section-kicker { color: #68a68f; font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    h2 { font-family: Manrope, sans-serif; font-size: 29px; letter-spacing: -.045em; margin: 3px 0 0; }
+    .section-note { color: var(--muted); font-size: 11px; }
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .card { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 23px; box-shadow: 0 8px 26px rgba(24,56,73,.035); }
+    .card-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 13px; }
+    .tag { display: inline-block; padding: 5px 9px; border-radius: 7px; background: #eaf5f1; color: #478b78; font-size: 9px; font-weight: 800; }
+    .date { color: #84939b; font-size: 10px; }
+    h3 { font-size: 15px; line-height: 1.4; margin: 0 0 7px; }
+    .card p { color: var(--muted); font-size: 11px; margin: 0; line-height: 1.8; }
+    .card ul { padding-left: 17px; margin: 13px 0 0; color: #506570; font-size: 11px; line-height: 1.9; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .skill { padding: 18px; border-radius: 14px; background: white; border: 1px solid var(--line); }
+    .skill-icon { width: 32px; height: 32px; border-radius: 10px; background: #eaf5f1; display: grid; place-items: center; color: var(--blue); font-size: 14px; margin-bottom: 11px; }
+    .skill strong { display: block; font-size: 12px; margin-bottom: 3px; }
+    .skill small { color: var(--muted); font-size: 10px; }
+    .contact {
+      background: var(--blue-dark); color: white; border-radius: 19px; padding: 30px 34px;
+      display: flex; justify-content: space-between; align-items: center; gap: 22px;
+    }
+    .contact h2 { font-size: 25px; margin: 0 0 5px; }
+    .contact p { color: #c5d8e0; font-size: 11px; margin: 0; }
+    .contact .btn { background: white; color: var(--blue-dark); white-space: nowrap; }
+    footer { border-top: 1px solid var(--line); padding: 22px 0 30px; color: #83919a; font-size: 10px; }
+    .footer-inner { width: min(1120px, calc(100% - 40px)); margin: auto; display: flex; justify-content: space-between; gap: 16px; }
+    @media (max-width: 760px) {
+      header { height: auto; min-height: 68px; }
+      .nav { padding: 13px 0; flex-wrap: wrap; }
+      .brand { min-width: 0; }
+      .nav-links { order: 3; width: 100%; overflow-x: auto; gap: 20px; padding: 5px 0 2px; }
+      .nav-side { margin-left: auto; }
+      .hero { grid-template-columns: 1fr; padding-top: 42px; gap: 10px; }
+      .visual { min-height: 330px; }
+      .orbit { width: 290px; height: 290px; }
+      .profile-card { width: 205px; height: 240px; }
+      .float-one { right: 2%; }
+      .float-two { left: 2%; }
+      .quick-links { grid-template-columns: 1fr; margin-bottom: 60px; }
+      .quick-item { border-right: 0; border-bottom: 1px solid var(--line); }
+      .quick-item:last-child { border-bottom: 0; }
+      .cards { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact { align-items: flex-start; flex-direction: column; padding: 26px; }
+      .section-note { display: none; }
+    }
+    @media (max-width: 420px) {
+      main { width: min(100% - 30px, 1120px); }
+      .nav { width: calc(100% - 30px); }
+      h1 { font-size: 43px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .skill { padding: 14px; }
+      .footer-inner { width: calc(100% - 30px); flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="browser-bar"><span class="browser-dot"></span> valentin-del-toro.github.io / portfolio</div>
+  <header>
+    <nav class="nav" aria-label="Navegación principal">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark">VT</span>
+        <span class="brand-name">Valentín del Toro<span>Informática y hardware</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a><a href="#formacion">Formación</a><a href="#experiencia">Experiencia</a><a href="#capacidades">Capacidades</a><a href="#contacto">Contacto</a>
+      </div>
+      <div class="nav-side"><span class="lang">ES</span></div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div>
+        <div class="eyebrow">Portfolio · Informática y tecnología</div>
+        <p class="hello">Hola, soy</p>
+        <h1>Valentín del Toro <span>Izquierdo.</span></h1>
+        <p class="intro">Estudiante de informática con interés en el hardware, la programación y el desarrollo de páginas web.</p>
+        <p class="subintro">Actualmente curso un Grado Medio de Informática. Me estoy formando en conocimientos informáticos, aplicaciones ofimáticas, programación y tecnología profesional.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#capacidades">Ver capacidades <span>↗</span></a>
+          <a class="btn btn-light" href="#contacto">Contacto</a>
+        </div>
+        <div class="meta"><span>Las Palmas de Gran Canaria</span><span>Informática y redes</span></div>
+      </div>
+      <div class="visual" aria-label="Elemento gráfico con las iniciales del portfolio">
+        <div class="orbit"></div>
+        <div class="profile-card"><div class="monogram">VT</div></div>
+        <div class="float-card float-one"><span class="float-icon">⌘</span><span>Programación<small>Python · Arduino</small></span></div>
+        <div class="float-card float-two"><span class="float-icon">▦</span><span>Hardware<small>Montaje · Verificación</small></span></div>
+      </div>
+    </section>
+
+    <div class="quick-links">
+      <a class="quick-item" href="#formacion"><span class="num">01</span><span><strong>Formación</strong><small>Estudios y conocimientos</small></span></a>
+      <a class="quick-item" href="#experiencia"><span class="num">02</span><span><strong>Experiencia</strong><small>Pruebas y verificación de equipos</small></span></a>
+      <a class="quick-item" href="#capacidades"><span class="num">03</span><span><strong>Capacidades</strong><small>Programación y hardware</small></span></a>
+    </div>
+
+    <section id="sobre-mi">
+      <div class="section-head"><div><div class="section-kicker">01 / Perfil</div><h2>Sobre mí</h2></div><span class="section-note">Interés por la tecnología y el aprendizaje práctico</span></div>
+      <div class="card">
+        <p>Mi formación está enfocada en la informática y la tecnología profesional. He adquirido conocimientos de programación, creación de páginas web, mantenimiento de ordenadores y desarrollo de proyectos con Arduino.</p>
+      </div>
+    </section>
+
+    <section id="formacion">
+      <div class="section-head"><div><div class="section-kicker">02 / Educación</div><h2>Formación académica</h2></div><span class="section-note">Educación y formación</span></div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><span class="tag">Formación actual</span><span class="date">Desde 15/09/2025</span></div>
+          <h3>ESO completada y Grado Medio de Informática en curso</h3>
+          <p>Centro de Educación Salesianas, San Juan Bosco · Las Palmas de Gran Canaria, España</p>
+          <ul>
+            <li>Técnicas profesionales: elaboración de páginas web y código de programación.</li>
+            <li>Tecnología profesional: principios básicos, higiene y seguridad.</li>
+            <li>Conocimiento de la profesión y su contexto económico, jurídico y social.</li>
+            <li>Conocimiento informático y uso de aplicaciones ofimáticas.</li>
+            <li>Entendimiento y comunicación en inglés.</li>
+          </ul>
+          <p style="margin-top:12px">Nivel indicado en el CV: Nivel 4 MEC / EQF-MEC.</p>
+        </article>
+        <article class="card">
+          <div class="card-top"><span class="tag">Áreas de aprendizaje</span><span class="date">Formación profesional</span></div>
+          <h3>Informática y tecnología</h3>
+          <p>Conocimientos y contenidos incluidos en la formación:</p>
+          <ul>
+            <li>Creación de páginas web.</li>
+            <li>Código de programación.</li>
+            <li>Aplicaciones ofimáticas.</li>
+            <li>Principios de tecnología, higiene y seguridad.</li>
+            <li>Comunicación en inglés.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="experiencia">
+      <div class="section-head"><div><div class="section-kicker">03 / Experiencia</div><h2>Experiencia laboral</h2></div><span class="section-note">Pruebas y verificación de equipos informáticos</span></div>
+      <article class="card">
+        <div class="card-top"><span class="tag">Técnica de hardware</span><span class="date">01/05/2026 — 01/06/2026</span></div>
+        <h3>Técnico de hardware para pruebas y verificación de equipos informáticos</h3>
+        <p>Las Palmas de Gran Canaria, España</p>
+        <ul>
+          <li>Mantenimiento de ordenadores.</li>
+          <li>Entendimiento informático y pensamiento computacional.</li>
+          <li>Creación de páginas web.</li>
+          <li>Creación de hardware con Arduino y desarrollo del código necesario.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="capacidades">
+      <div class="section-head"><div><div class="section-kicker">04 / Competencias</div><h2>Capacidades</h2></div><span class="section-note">Conocimientos y habilidades recogidos en el CV</span></div>
+      <div class="skills-grid">
+        <div class="skill"><div class="skill-icon">⌘</div><strong>Python</strong><small>Programación</small></div>
+        <div class="skill"><div class="skill-icon">⌁</div><strong>Arduino</strong><small>Programación y proyectos</small></div>
+        <div class="skill"><div class="skill-icon">▦</div><strong>Hardware</strong><small>Plataformas de hardware</small></div>
+        <div class="skill"><div class="skill-icon">⌗</div><strong>Planos de montaje</strong><small>Interpretación</small></div>
+        <div class="skill"><div class="skill-icon">✓</div><strong>Instrucciones</strong><small>Ejecución de instrucciones de trabajo</small></div>
+        <div class="skill"><div class="skill-icon">◷</div><strong>Organización</strong><small>Seguimiento de calendarios de trabajo</small></div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="contact">
+        <div><h2>¿Hablamos?</h2><p>Portfolio de Valentín del Toro Izquierdo.</p></div>
+        <a class="btn" href="mailto:">Añadir correo de contacto <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer><div class="footer-inner"><span>© <span id="year"></span> Valentín del Toro Izquierdo</span><span>Portfolio personal · Informática y tecnología</span></div></footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
